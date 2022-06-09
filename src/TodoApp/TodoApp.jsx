@@ -22,6 +22,17 @@ function TodoApp() {
 
   function handleUpdateTodo(updateTodoId, updatedTitle) {
     console.log('handleUpdateTodo called in TodoApp', updateTodoId, updatedTitle);
+    // nemutuodami mainTodoArray
+    // surasti obj kurio id === updateTodoId ir atnaujinti jo title su updatedTitle
+    setMainTodoArray((prevMainTodoArray) =>
+      prevMainTodoArray.map((tObj) => {
+        // jei tai yra tas objektas kuris yra atnaujinamas
+        if (tObj.id === updateTodoId) {
+          return { ...tObj, title: updatedTitle };
+        }
+        return { ...tObj };
+      })
+    );
   }
 
   function handleAddTodo(titleFromInput) {
