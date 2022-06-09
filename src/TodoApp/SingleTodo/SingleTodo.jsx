@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import Icon from '../UI/Icon';
 
-function SingleTodo({ id, title, isDone: isDoneProp, onDelete, onToggle }) {
-  // kai paspaudziu ant rutulioko ikoneles iskonsolinu "paspaudei"
-  // kai paspaudziu ant <i className={`fa fa-home`} aria-hidden='true'></i> iskonsolinu "paspaudei"
+function SingleTodo({ id, title, isDone: isDoneProp, onDelete, onToggle, onEdit }) {
+  const [isEditOn, setIsEditOn] = useState(false);
+
+  function singleTodoEdit() {
+    setIsEditOn((prevIsEditOn) => !prevIsEditOn);
+
+    // onEdit()
+  }
 
   return (
     <li className={isDoneProp === true ? 'item line-through' : 'item'}>
@@ -11,8 +16,11 @@ function SingleTodo({ id, title, isDone: isDoneProp, onDelete, onToggle }) {
         onClick={() => onToggle(id)}
         icon={isDoneProp === true ? 'fa-check-circle' : 'fa-circle-thin'}
       />
+      {/* rodom jei isEditOn yra false */}
       <span className='text'>{title}</span>
-      <Icon icon='fa-pencil' />
+      {/* rodom jei isEditOn yra true */}
+      <input type='text' />
+      <Icon onClick={singleTodoEdit} icon='fa-pencil' />
       <Icon onClick={() => onDelete(id)} icon='fa-trash' />
     </li>
   );

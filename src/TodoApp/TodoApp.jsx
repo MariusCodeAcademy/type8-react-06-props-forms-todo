@@ -20,6 +20,10 @@ function TodoApp() {
     setMainTodoArray([]);
   }
 
+  function handleUpdateTodo(updateTodoId, updatedTitle) {
+    console.log('handleUpdateTodo called in TodoApp');
+  }
+
   function handleAddTodo(titleFromInput) {
     console.log('handleAddTodo called', titleFromInput);
     const newTodoItem = { id: uuid(), title: titleFromInput, isDone: false };
@@ -49,20 +53,19 @@ function TodoApp() {
     setMainTodoArray(filtered);
   }
 
-  /** 1 / 5
-   * {done: 1
-   *  total: 5
-   * }
-   */
-  function doneNotDoneTodos() {}
   return (
     <div className='container'>
-      <Header />
+      <Header
+        // magic
+        todos={mainTodoArray.map(({ isDone }) => ({ isDone }))}
+        onResetTodos={handleResetTodos}
+      />
       <TodoList
         todos={mainTodoArray}
         onAddTodo={handleAddTodo}
         onToggle={handleToggleTodo}
         onDelete={handleDelete}
+        onEdit={handleUpdateTodo}
       />
     </div>
   );
