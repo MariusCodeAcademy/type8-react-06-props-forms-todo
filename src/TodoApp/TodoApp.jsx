@@ -16,18 +16,16 @@ function uuid() {
 function TodoApp() {
   const [mainTodoArray, setMainTodoArray] = useState(initTodos);
 
-  // sukurti funkcija kuri prideda nauja todo
-  // iskviesti handleAddTodo esancia TodoList is AddTodo.jsx
+  function handleResetTodos() {
+    setMainTodoArray([]);
+  }
+
   function handleAddTodo(titleFromInput) {
     console.log('handleAddTodo called', titleFromInput);
     const newTodoItem = { id: uuid(), title: titleFromInput, isDone: false };
     setMainTodoArray((prevTodoArr) => [...prevTodoArr, newTodoItem]);
   }
-  // { id: 3, title: 'Buy Sugar', isDone: false }
-  // iskvieciam funkcija su myguko paspaudimu
 
-  // sukurti funkcija toggleTodo(id)
-  // iskviesti handleToggleTodo kai pasdauziam ant burbuliuko
   function handleToggleTodo(toggleId) {
     // console.log('handleToggleTodo happened', toggleId);
     // pasidarom todoArray deeper kopija
@@ -44,12 +42,8 @@ function TodoApp() {
     setMainTodoArray(mainTodoArrayCopy);
   }
 
-  // delete
-  // atnaujinti state su kopija state kurioje nera to el kuri trynem
   function handleDelete(deleteId) {
     console.log('handleDelete was initiated by todo with id', deleteId);
-
-    // isfiltruoti mainTodoArray ir gauti masyva kuriame nera objeto kurio id === deleteId
     const filtered = mainTodoArray.filter((tObj) => tObj.id !== deleteId);
     console.log('filtered ===', filtered);
     setMainTodoArray(filtered);

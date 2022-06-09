@@ -1,5 +1,4 @@
 import SingleTodo from '../SingleTodo/SingleTodo';
-import { useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 
 function TodoList(props) {
