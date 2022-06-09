@@ -21,7 +21,7 @@ function TodoApp() {
   }
 
   function handleUpdateTodo(updateTodoId, updatedTitle) {
-    console.log('handleUpdateTodo called in TodoApp');
+    console.log('handleUpdateTodo called in TodoApp', updateTodoId, updatedTitle);
   }
 
   function handleAddTodo(titleFromInput) {
